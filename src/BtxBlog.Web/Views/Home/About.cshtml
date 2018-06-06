@@ -5,3 +5,50 @@
 <h3>@ViewData["Message"]</h3>
 
 <p>Use this area to provide additional information.</p>
+
+<form asp-action="Markdown">
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="form-group">
+                <label class="control-label">
+                    Markdown Text
+                </label>
+                <textarea name="content" id="markdown-text" rows="20" class="form-control"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">
+                Submit
+            </button>
+        </div>
+        <div class="col-md-6">
+            <div id="markdown-display">
+
+            </div>
+        </div>
+    </div>
+</form>
+@section scripts{
+    <script src="~/lib/showdown/dist/showdown.js"></script>
+
+    <script type="text/javascript">
+
+        $(function () {
+
+            $("#markdown-text").on('change keyup paste', function () {
+                update();
+            })
+        });
+
+        function update() {
+
+            var text = document.getElementById('markdown-text').value,
+
+                target = document.getElementById('markdown-display'),
+                converter = new showdown.Converter(),
+                html = converter.makeHtml(text);
+
+            target.innerHTML = html;
+        }
+
+    </script>
+}
