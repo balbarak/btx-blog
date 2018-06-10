@@ -2,6 +2,10 @@
   "name": "asp.net",
   "private": true,
   "dependencies": {
-    "showdown": "1.6.4"
+    "showdown": "1.6.4",
+    "bootstrap": "v4.1.1"
+  },
+  "resolutions": {
+    "bootstrap": "v4.1.1"
   }
 }
